@@ -1,13 +1,13 @@
-package com.portal.rhub;
+package main.java.com.portal.rhub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RhubApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RhubApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

@@ -1,0 +1,26 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: rhubService
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://127.0.0.1:5432/rhubservice
+    username: postgres
+    password: myPassword
+#TODO : Below property has to be removed and issue with hibernateLazyInitializer has to be fixed
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+cors:
+  max-age: 3600
+  allowed-origins:
+    - 'http://localhost:3000'
+    
+    

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rhubService
+  name: rhubService
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rhubService
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: rhubService
+    spec:
+      nodeSelector:
+        pods_to_host: "rhubService-nonprod-microservices"
+      containers:
+      - image: gcr.io/$PROJECT/develop/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}
+        name: rhubService
+        resources: {}
+        readinessProbe:
+          httpGet:
+            path: /v1/
+            port: 8004
+        ports:
+        - containerPort: 8004
+        env:
+        - name: 127.0.0.1
+          valueFrom:
+            secretKeyRef:
+              name: postgresssecret
+              key: database
+        - name: postgres
+          valueFrom:
+            secretKeyRef:
+              name: postgresssecret
+              key: username
+        - name: myPassword
+          valueFrom:
+            secretKeyRef:
+              name: postgresssecret
+              key: password
+status: {}
