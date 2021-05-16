@@ -1,5 +1,5 @@
 server:
-  port: 8004
+  port: 8010
 spring:
   application:
     name: rhubService
@@ -18,9 +18,4 @@ spring:
     serialization:
       fail-on-empty-beans: false
 
-cors:
-  max-age: 3600
-  allowed-origins:
-    - 'http://localhost:3000'
-    
     

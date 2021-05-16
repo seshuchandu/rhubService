@@ -1,19 +1,29 @@
-package main.java.com.portal.rhub.controller;
+package com.portal.rhub.controller;
+
+import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.portal.rhub.entity.JobPreference;
+
+import jdk.jfr.Registered;
 import lombok.RequiredArgsConstructor;
 
+
 @RestController
-@RequestMapping("/v1/")
-@RequiredArgsConstructor
 public class JobPreferenceController {
 	
-	@GetMapping(value = "/jobPreference/")
+	@GetMapping(value = "/jobPreference")
 	  public String  getStatus() {
-	    return "OK";
+		return "OK";
 	  }
 
+	
+	@GetMapping(value = "/getJpbykey")
+	public List<JobPreference> getJPbyKey(String searchKey){
+		return null;
+	}
+	
 }

@@ -24,9 +24,9 @@ spec:
         readinessProbe:
           httpGet:
             path: /v1/
-            port: 8004
+            port: 8010
         ports:
-        - containerPort: 8004
+        - containerPort: 8010
         env:
         - name: 127.0.0.1
           valueFrom:

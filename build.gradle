@@ -10,13 +10,23 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+ext {
+    set('springCloudGcpVersion', "2.0.0")
+    set('springCloudVersion', "2020.0.1")
 }
 
+dependencyManagement {
+    imports {
+       // mavenBom "com.google.cloud:spring-cloud-gcp-dependencies:${springCloudGcpVersion}"
+     //   mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
@@ -32,7 +42,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.11.3'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.3'
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.2'
-    
+    //implementation 'com.google.cloud:spring-cloud-gcp-starter-storage'
 
     implementation  'org.modelmapper:modelmapper:2.3.9'
 
