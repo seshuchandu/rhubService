@@ -3,7 +3,9 @@ package com.portal.rhub.controller;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -22,12 +24,21 @@ public class UtilController {
 	@GetMapping(value = "/getFacilities.json")
 	public List getFacilities() { //test patter // need to change to DB call
 		
-		
 		List allFacilities = new ArrayList<>();
-		allFacilities.add(FacilityUI.Cab);
-		allFacilities.add(FacilityUI.No_Bond);
-		
+		for(FacilityUI instance: FacilityUI.values()) {
+			 allFacilities.add(instance.label);
+		 }
 		return allFacilities ;
+	}
+	
+	@GetMapping(value = "/getFacilitiesMap.json")
+	public Map<String, String> getFacilitiesMap() { //test patter // need to change to DB call
+		
+		Map<String,String> facilityMap = new HashMap<>();
+		for(FacilityUI instance: FacilityUI.values()) {
+			facilityMap.put(String.valueOf(instance.id),instance.label);
+		 }
+		return facilityMap ;
 	}
 
 }
